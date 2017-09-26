@@ -18,7 +18,7 @@ it enables you editing your nodes with ease.
 
 ### Saving data:
 
-![Saving data image]((https://github.com/pedro15/MoonBehavior/raw/master/Images/SavingData.PNG)
+![Saving data image](https://github.com/pedro15/MoonBehavior/raw/master/Images/SavingData.PNG)
 
 "SaveGraph" : Saves the current graph ( it's like your behavior tree "Proyect" )
 
@@ -36,20 +36,20 @@ BehaviorTrees default saved at: "Assets/MoonBehavior/BehaviorTrees"
 
 ### AI Memory:
 
-![Memory image]((https://github.com/pedro15/MoonBehavior/raw/master/Images/Memory.PNG)
+![Memory image](https://github.com/pedro15/MoonBehavior/raw/master/Images/Memory.PNG)
 
 The AI's memory are used for saving local data in each AI agent.
 
 To assign and remove elements:
 
-![Memory image2]((https://github.com/pedro15/MoonBehavior/raw/master/Images/Memory2.PNG)
+![Memory image2](https://github.com/pedro15/MoonBehavior/raw/master/Images/Memory2.PNG)
 
 The Inspector Supported data are: STRING,FLOAT,INT,BOOLEAN,VECTOR2,VECTOR3,VECTOR4,OBJECT (Every unity assignable type (GameObject,audioclip,scriptableObject,Sprite,Texture2D etc..)),
 COLOR and LAYERMASK. 
 
 To edit an element:
 
-![Memory image3]((https://github.com/pedro15/MoonBehavior/raw/master/Images/Memory3.PNG)
+![Memory image3](https://github.com/pedro15/MoonBehavior/raw/master/Images/Memory3.PNG)
 
 It needs to have an "key" to identify each element (it is used in code to get and set the value).
 
