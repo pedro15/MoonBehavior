@@ -51,7 +51,7 @@
 			{ regex: /\byield(?=\s+(?:return|break)\b)/g,				css: 'keyword' }			// contextual keyword: 'yield'
 			];
 		
-		this.forHtmlScript(SyntaxHighlighter.regexLib.aspScriptTags);
+		//this.forHtmlScript(SyntaxHighlighter.regexLib.aspScriptTags);
 	};
 
 	Brush.prototype	= new SyntaxHighlighter.Highlighter();
