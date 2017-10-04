@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Using memory - MoonBehavior</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Using memory";
+    var mkdocs_page_input_path = "using-memory.md";
+    var mkdocs_page_url = "/using-memory/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> MoonBehavior</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Using memory</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#adding-elements">Adding elements</a></li>
+    
+
+    <li class="toctree-l2"><a href="#removing-elements">Removing elements</a></li>
+    
+
+    <li class="toctree-l2"><a href="#get-values">Get values</a></li>
+    
+
+    <li class="toctree-l2"><a href="#clear-memory">Clear Memory</a></li>
+    
+
+    <li class="toctree-l2"><a href="#save-load">Save &amp; Load</a></li>
+    
+
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">MoonBehavior</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Using memory</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p>AI memory allows you to store some information between the graph nodes and The AI agent.</p>
+<p>The AI memory stores every element as object type that means that you can store on the memory almost every data type.</p>
+<h3 id="adding-elements">Adding elements</h3>
+<p>Add element to memory list:</p>
+<p>-- image here -- </p>
+<p>Modify the content: </p>
+<p>-- image here -- </p>
+<p><strong>Using code:</strong></p>
+<pre><code class="csharp">using MoonBehavior;
+using UnityEngine;
+
+public class ExampleScript : MonoBehavior 
+{
+    public MoonAI ai;
+
+    void Start()
+    {
+        ai.Memory.SetItem(&quot;Label&quot; , value);
+    }
+}
+</code></pre>
+
+<h3 id="removing-elements">Removing elements</h3>
+<p>To removing elements in the inspector it's just clicking on the (-) buttun and it will remove the selected item.</p>
+<p><strong>Using Code:</strong></p>
+<pre><code class="csharp">using MoonBehavior;
+using UnityEngine;
+
+public class ExampleScript : MonoBehavior 
+{
+    public MoonAI ai;
+
+    void Start()
+    {
+        ai.Memory.Remove(&quot;Label&quot;);
+    }
+}
+</code></pre>
+
+<h3 id="get-values">Get values</h3>
+<p>Simple item:</p>
+<pre><code class="csharp">using MoonBehavior;
+using UnityEngine;
+
+public class ExampleScript : MonoBehavior 
+{
+    public MoonAI ai;
+
+    void Start()
+    {
+        float a =  ai.Memory.GetValue&lt;float&gt;(&quot;Label&quot;);
+    }
+}
+</code></pre>
+
+<p>MemoryItem:</p>
+<p>Allows support of constant and memory-based values of different data types (NOTE: it doesn't support array.) that gets value automatically.</p>
+<pre><code class="csharp">using UnityEngine;
+using MoonBehavior.Memory;
+using MoonBehavior;
+
+public class ExampleScript : MonoBehaviour
+{
+
+    public MemoryItem Item = new MemoryItem(MemoryItem.ItemType.FLOAT);
+
+    public MoonAI ai; 
+
+    private void Start()
+    {
+        float b = Item.GetValue&lt;float&gt;(ai);
+    }
+}
+</code></pre>
+
+<h3 id="clear-memory">Clear Memory</h3>
+<p>To clear the memory Simply call The <strong>Clear()</strong> Method</p>
+<blockquote>
+<p>It will kill all the AI memory, so be careful about destroying the memory data.</p>
+</blockquote>
+<pre><code class="csharp">using UnityEngine;
+using MoonBehavior;
+
+public class ExampleScript : MonoBehaviour
+{
+    public MoonAI ai; 
+
+    private void Start()
+    {
+        ai.Memory.Clear();
+    }
+}
+</code></pre>
+
+<h3 id="save-load">Save &amp; Load</h3>
+<p>Saving and loading data allows you to keep in HDD / RAM the AI's Memory.</p>
+<p>It will return an byte array and you can save it later to a file and loaing it again.</p>
+<blockquote>
+<p><strong>Note:</strong> the serialization and des-serialization can be <strong>slow</strong> because it encrypts and decrypts the information to return safe data.</p>
+<p>Doesn't support unity-derived (UnityEngine.Object) data types because it's not safe at serialization.</p>
+</blockquote>
+<p><strong>Saving</strong></p>
+<p>To save from memory call the method: Save(string password) </p>
+<blockquote>
+<p>Password: password use as key to encrypt the Memory. You must keep it, it will be used on loading. </p>
+</blockquote>
+<p>Example saving data:</p>
+<pre><code class="csharp">
+using UnityEngine;
+using System.Collections;
+using MoonBehavior;
+using System.IO;
+
+public class ExampleScript : MonoBehaviour
+{
+    public MoonAI ai;
+    private void  Start()
+    {
+        // Push some data to the AI memory
+        for (int i = 0; i &lt; 10; i++)
+        {
+            ai.Memory.SetValue(i.ToString(), Random.Range(-1000, 1000));
+        }
+        // Saves the data with the password: 123
+        byte[] dataf = ai.Memory.Save(&quot;123&quot;);
+        // Saves the data to the &quot;Assets&quot; folder of your proyect just as example saving to file.
+        File.WriteAllBytes(Application.dataPath + &quot;/test.txt&quot;, dataf); 
+    }
+}
+</code></pre>
+
+<p><strong>Loading</strong></p>
+<p>To load from memory call the method: Load(byte[] Data , string password)</p>
+<blockquote>
+<p>Data: byte array of the previusly saved data.
+Password: Password linked with the saved data.</p>
+</blockquote>
+<p>Example loading data:</p>
+<pre><code class="csharp">using UnityEngine;
+using System.Collections;
+using MoonBehavior;
+
+public class ExampleScript : MonoBehaviour
+{
+    public MoonAI ai;
+
+    public TextAsset preload;
+
+    private void  Start()
+    {
+        if (preload != null)
+        {
+            ai.Memory.Load(preload.bytes, &quot;123&quot;);
+        }
+    }
+}
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href=".." class="btn btn-neutral" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script src="../js/theme.js"></script>
+
+</body>
+</html>

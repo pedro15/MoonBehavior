@@ -1,0 +1,49 @@
+{
+    "docs": [
+        {
+            "location": "/",
+            "text": "Welcome\n\n\nMoonBehavior is a simple but powerfult \nBehaviorTree\n System \nfor \nUnity3d\n game engine. \n\n\nFor more info about MoonBehavior Please visit the Github Repository \nHere\n.\n\n\nGetting Started\n\n\nThe Getting Started videos will be aviable soon via Youtube.",
+            "title": "Home"
+        },
+        {
+            "location": "/#welcome",
+            "text": "MoonBehavior is a simple but powerfult  BehaviorTree  System \nfor  Unity3d  game engine.   For more info about MoonBehavior Please visit the Github Repository  Here .",
+            "title": "Welcome"
+        },
+        {
+            "location": "/#getting-started",
+            "text": "The Getting Started videos will be aviable soon via Youtube.",
+            "title": "Getting Started"
+        },
+        {
+            "location": "/using-memory/",
+            "text": "AI memory allows you to store some information between the graph nodes and The AI agent.\n\n\nThe AI memory stores every element as object type that means that you can store on the memory almost every data type.\n\n\nAdding elements\n\n\nAdd element to memory list:\n\n\n-- image here -- \n\n\nModify the content: \n\n\n-- image here -- \n\n\nUsing code:\n\n\nusing MoonBehavior;\nusing UnityEngine;\n\npublic class ExampleScript : MonoBehavior \n{\n    public MoonAI ai;\n\n    void Start()\n    {\n        ai.Memory.SetItem(\"Label\" , value);\n    }\n}\n\n\n\n\nRemoving elements\n\n\nTo removing elements in the inspector it's just clicking on the (-) buttun and it will remove the selected item.\n\n\nUsing Code:\n\n\nusing MoonBehavior;\nusing UnityEngine;\n\npublic class ExampleScript : MonoBehavior \n{\n    public MoonAI ai;\n\n    void Start()\n    {\n        ai.Memory.Remove(\"Label\");\n    }\n}\n\n\n\n\nGet values\n\n\nSimple item:\n\n\nusing MoonBehavior;\nusing UnityEngine;\n\npublic class ExampleScript : MonoBehavior \n{\n    public MoonAI ai;\n\n    void Start()\n    {\n        float a =  ai.Memory.GetValue<float>(\"Label\");\n    }\n}\n\n\n\n\nMemoryItem:\n\n\nAllows support of constant and memory-based values of different data types (NOTE: it doesn't support array.) that gets value automatically.\n\n\nusing UnityEngine;\nusing MoonBehavior.Memory;\nusing MoonBehavior;\n\npublic class ExampleScript : MonoBehaviour\n{\n\n    public MemoryItem Item = new MemoryItem(MemoryItem.ItemType.FLOAT);\n\n    public MoonAI ai; \n\n    private void Start()\n    {\n        float b = Item.GetValue<float>(ai);\n    }\n}\n\n\n\n\nClear Memory\n\n\nTo clear the memory Simply call The \nClear()\n Method\n\n\n\n\nIt will kill all the AI memory, so be careful about destroying the memory data.\n\n\n\n\nusing UnityEngine;\nusing MoonBehavior;\n\npublic class ExampleScript : MonoBehaviour\n{\n    public MoonAI ai; \n\n    private void Start()\n    {\n        ai.Memory.Clear();\n    }\n}\n\n\n\n\nSave & Load\n\n\nSaving and loading data allows you to keep in HDD / RAM the AI's Memory.\n\n\nIt will return an byte array and you can save it later to a file and loaing it again.\n\n\n\n\nNote:\n the serialization and des-serialization can be \nslow\n because it encrypts and decrypts the information to return safe data.\n\n\nDoesn't support unity-derived (UnityEngine.Object) data types because it's not safe at serialization.\n\n\n\n\nSaving\n\n\nTo save from memory call the method: Save(string password) \n\n\n\n\nPassword: password use as key to encrypt the Memory. You must keep it, it will be used on loading. \n\n\n\n\nExample saving data:\n\n\n\nusing UnityEngine;\nusing System.Collections;\nusing MoonBehavior;\nusing System.IO;\n\npublic class ExampleScript : MonoBehaviour\n{\n    public MoonAI ai;\n    private void  Start()\n    {\n        // Push some data to the AI memory\n        for (int i = 0; i < 10; i++)\n        {\n            ai.Memory.SetValue(i.ToString(), Random.Range(-1000, 1000));\n        }\n        // Saves the data with the password: 123\n        byte[] dataf = ai.Memory.Save(\"123\");\n        // Saves the data to the \"Assets\" folder of your proyect just as example saving to file.\n        File.WriteAllBytes(Application.dataPath + \"/test.txt\", dataf); \n    }\n}\n\n\n\n\nLoading\n\n\nTo load from memory call the method: Load(byte[] Data , string password)\n\n\n\n\nData: byte array of the previusly saved data.\nPassword: Password linked with the saved data.\n\n\n\n\nExample loading data:\n\n\nusing UnityEngine;\nusing System.Collections;\nusing MoonBehavior;\n\npublic class ExampleScript : MonoBehaviour\n{\n    public MoonAI ai;\n\n    public TextAsset preload;\n\n    private void  Start()\n    {\n        if (preload != null)\n        {\n            ai.Memory.Load(preload.bytes, \"123\");\n        }\n    }\n}",
+            "title": "Using memory"
+        },
+        {
+            "location": "/using-memory/#adding-elements",
+            "text": "Add element to memory list:  -- image here --   Modify the content:   -- image here --   Using code:  using MoonBehavior;\nusing UnityEngine;\n\npublic class ExampleScript : MonoBehavior \n{\n    public MoonAI ai;\n\n    void Start()\n    {\n        ai.Memory.SetItem(\"Label\" , value);\n    }\n}",
+            "title": "Adding elements"
+        },
+        {
+            "location": "/using-memory/#removing-elements",
+            "text": "To removing elements in the inspector it's just clicking on the (-) buttun and it will remove the selected item.  Using Code:  using MoonBehavior;\nusing UnityEngine;\n\npublic class ExampleScript : MonoBehavior \n{\n    public MoonAI ai;\n\n    void Start()\n    {\n        ai.Memory.Remove(\"Label\");\n    }\n}",
+            "title": "Removing elements"
+        },
+        {
+            "location": "/using-memory/#get-values",
+            "text": "Simple item:  using MoonBehavior;\nusing UnityEngine;\n\npublic class ExampleScript : MonoBehavior \n{\n    public MoonAI ai;\n\n    void Start()\n    {\n        float a =  ai.Memory.GetValue<float>(\"Label\");\n    }\n}  MemoryItem:  Allows support of constant and memory-based values of different data types (NOTE: it doesn't support array.) that gets value automatically.  using UnityEngine;\nusing MoonBehavior.Memory;\nusing MoonBehavior;\n\npublic class ExampleScript : MonoBehaviour\n{\n\n    public MemoryItem Item = new MemoryItem(MemoryItem.ItemType.FLOAT);\n\n    public MoonAI ai; \n\n    private void Start()\n    {\n        float b = Item.GetValue<float>(ai);\n    }\n}",
+            "title": "Get values"
+        },
+        {
+            "location": "/using-memory/#clear-memory",
+            "text": "To clear the memory Simply call The  Clear()  Method   It will kill all the AI memory, so be careful about destroying the memory data.   using UnityEngine;\nusing MoonBehavior;\n\npublic class ExampleScript : MonoBehaviour\n{\n    public MoonAI ai; \n\n    private void Start()\n    {\n        ai.Memory.Clear();\n    }\n}",
+            "title": "Clear Memory"
+        },
+        {
+            "location": "/using-memory/#save-load",
+            "text": "Saving and loading data allows you to keep in HDD / RAM the AI's Memory.  It will return an byte array and you can save it later to a file and loaing it again.   Note:  the serialization and des-serialization can be  slow  because it encrypts and decrypts the information to return safe data.  Doesn't support unity-derived (UnityEngine.Object) data types because it's not safe at serialization.   Saving  To save from memory call the method: Save(string password)    Password: password use as key to encrypt the Memory. You must keep it, it will be used on loading.    Example saving data:  \nusing UnityEngine;\nusing System.Collections;\nusing MoonBehavior;\nusing System.IO;\n\npublic class ExampleScript : MonoBehaviour\n{\n    public MoonAI ai;\n    private void  Start()\n    {\n        // Push some data to the AI memory\n        for (int i = 0; i < 10; i++)\n        {\n            ai.Memory.SetValue(i.ToString(), Random.Range(-1000, 1000));\n        }\n        // Saves the data with the password: 123\n        byte[] dataf = ai.Memory.Save(\"123\");\n        // Saves the data to the \"Assets\" folder of your proyect just as example saving to file.\n        File.WriteAllBytes(Application.dataPath + \"/test.txt\", dataf); \n    }\n}  Loading  To load from memory call the method: Load(byte[] Data , string password)   Data: byte array of the previusly saved data.\nPassword: Password linked with the saved data.   Example loading data:  using UnityEngine;\nusing System.Collections;\nusing MoonBehavior;\n\npublic class ExampleScript : MonoBehaviour\n{\n    public MoonAI ai;\n\n    public TextAsset preload;\n\n    private void  Start()\n    {\n        if (preload != null)\n        {\n            ai.Memory.Load(preload.bytes, \"123\");\n        }\n    }\n}",
+            "title": "Save &amp; Load"
+        }
+    ]
+}
