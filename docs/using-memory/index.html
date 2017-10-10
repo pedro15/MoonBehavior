@@ -49,7 +49,12 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="..">Getting Started</a>
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../getting-started/">Getting started</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -78,6 +83,11 @@
     
 
     </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../custom-nodes/">Creating custom nodes</a>
 	    </li>
           
         </ul>
@@ -113,8 +123,8 @@
             <div class="section">
               
                 <p><img alt="MoonAI_Memory" src="../images/Memory/MoonAI_Memory.PNG" /></p>
-<p>AI memory allows you to store some information between the graph nodes and The AI agent.</p>
-<p>The AI memory stores every element as object type that means that you can store on the memory almost every data type.</p>
+<p>AI memory allows you to store some information between the graph nodes and The AI GameObject.</p>
+<p>The AI memory stores every element as object type that means that you can store on the memory almost every data type (via code).</p>
 <h3 id="adding-elements">Adding elements</h3>
 <p>Add element to memory list:</p>
 <p><img alt="MoonAI AddMemory2" src="../images/Memory/MoonAI_Memory2.PNG" /></p>
@@ -136,7 +146,7 @@ public class ExampleScript : MonoBehavior
 </code></pre>
 
 <h3 id="removing-elements">Removing elements</h3>
-<p>To removing elements in the inspector it's just clicking on the (-) buttun and it will remove the selected item.</p>
+<p>To remove elements in the inspector it's just clicking on the (-) buttun and it will remove the selected item.</p>
 <p><strong>Using Code:</strong></p>
 <pre><code class="csharp">using MoonBehavior;
 using UnityEngine;
@@ -170,22 +180,34 @@ public class ExampleScript : MonoBehavior
 
 <p>MemoryItem:</p>
 <p>Allows support of constant and memory-based values of different data types (NOTE: it doesn't support array.) that gets value automatically.</p>
-<pre><code class="csharp">using UnityEngine;
+<blockquote>
+<p>Only works on <a href="../custom-nodes/">Custom Nodes</a></p>
+</blockquote>
+<pre><code class="csharp">
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using MoonBehavior.Memory;
-using MoonBehavior;
+using MoonBehavior.Core;
 
-public class ExampleScript : MonoBehaviour
+namespace MoonBehavior.Actions
 {
-
-    public MemoryItem Item = new MemoryItem(MemoryItem.ItemType.FLOAT);
-
-    public MoonAI ai; 
-
-    private void Start()
+    [Action]
+    public class MyAction : Task
     {
-        float b = Item.GetValue&lt;float&gt;(ai);
+
+        [Display]
+        public MemoryItem Item = new MemoryItem(MemoryItem.ItemType.FLOAT);
+
+        // OnExecute is called when the action are executed
+        public override TaskResult OnExecute(MoonAI ai)
+        {
+            Debug.Log(Item.GetValue&lt;float&gt;(ai));
+            return TaskResult.Success; 
+        }
     }
 }
+
 </code></pre>
 
 <h3 id="clear-memory">Clear Memory</h3>
@@ -215,7 +237,7 @@ public class ExampleScript : MonoBehaviour
 <p>Doesn't support unity-derived (UnityEngine.Object) data types because it's not safe at serialization.</p>
 </blockquote>
 <p><strong>Saving</strong></p>
-<p>To save from memory call the method: Save(string password) </p>
+<p>To save from memory call : Save(string password) </p>
 <blockquote>
 <p>Password: password use as key to encrypt the Memory. You must keep it, it will be used on loading. </p>
 </blockquote>
@@ -245,7 +267,7 @@ public class ExampleScript : MonoBehaviour
 </code></pre>
 
 <p><strong>Loading</strong></p>
-<p>To load from memory call the method: Load(byte[] Data , string password)</p>
+<p>To load from memory call : Load(byte[] Data , string password)</p>
 <blockquote>
 <p>Data: byte array of the previusly saved data.</p>
 <p>Password: Password linked with the saved data.</p>
@@ -277,6 +299,8 @@ public class ExampleScript : MonoBehaviour
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="../custom-nodes/" class="btn btn-neutral float-right" title="Creating custom nodes">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
       
         <a href="../node-types/" class="btn btn-neutral" title="Node Types"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
@@ -306,6 +330,8 @@ public class ExampleScript : MonoBehaviour
       
         <span><a href="../node-types/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
+      
+        <span style="margin-left: 15px"><a href="../custom-nodes/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

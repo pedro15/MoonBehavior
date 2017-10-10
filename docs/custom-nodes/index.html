@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Creating custom nodes - MoonBehavior</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Creating custom nodes";
+    var mkdocs_page_input_path = "custom-nodes.md";
+    var mkdocs_page_url = "/custom-nodes/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> MoonBehavior</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../getting-started/">Getting started</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../node-types/">Node Types</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../using-memory/">Using Memory</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Creating custom nodes</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#creating-a-custom-node">Creating a custom node</a></li>
+    
+
+    <li class="toctree-l2"><a href="#actions">Actions</a></li>
+    
+
+    <li class="toctree-l2"><a href="#decisions">Decisions</a></li>
+    
+
+    <li class="toctree-l2"><a href="#displaying-elements">Displaying Elements</a></li>
+    
+
+    <li class="toctree-l2"><a href="#aditional-options">Aditional Options</a></li>
+    
+
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">MoonBehavior</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Creating custom nodes</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p>Custom Tasks allows you to put custom events and logic , interacting with you game code and much more.</p>
+<h1 id="creating-a-custom-node">Creating a custom node</h1>
+<p>1- On your behavior tree go to the right corner and hit 'Create action' </p>
+<p><img alt="CreateAction" src="../images/CustomActions/create-action.png" /></p>
+<p>2- Set the name and select the type, then hit 'Create'</p>
+<p><img alt="ActionName" src="../images/CustomActions/create-action2.png" /></p>
+<p>3- Then your script editor should open the file</p>
+<blockquote>
+<p><strong>The files are default saved to:</strong> Assets/MoonBehavior/Actions/</p>
+</blockquote>
+<h1 id="actions">Actions</h1>
+<p>Custom actions are actions that the AI executes. ( eg: Move , Destroying , Animating..)</p>
+<p>the default layout for a custom action are:</p>
+<pre><code class="csharp">
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using MoonBehavior.Memory;
+using MoonBehavior.Core;
+
+namespace MoonBehavior.Actions
+{
+    [Action]
+    public class MyAction : Task
+    {
+        // OnExecute is called when the action are executed
+        public override TaskResult OnExecute(MoonAI ai)
+        {
+            return TaskResult.Success; 
+        }
+    }
+}
+
+</code></pre>
+
+<p>You must return an state (FAILURE , SUCCESS , RUNNING ) depending on what you are doing..</p>
+<p>The Action Class must be marked with [Action] attribute and the class must derived from 'Task'. </p>
+<h1 id="decisions">Decisions</h1>
+<p>Decisions are an Action type but it are made to execute Tasks as childs.</p>
+<p>the default layout for custom decision are:</p>
+<pre><code class="csharp">
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using MoonBehavior.Memory;
+using MoonBehavior.Core;
+
+namespace MoonBehavior.Actions.Decisions
+{
+    [Action]
+    public class MyDecision : Decision
+    {
+        // Decisions are the tasks that executes child tasks 
+        public override TaskResult OnExecute(MoonAI ai)
+        {
+            for (int i = 0; i &lt; Childs.Length; i++)
+            {
+                // To call an child task you must  use Execute() Instead of OnExecute()
+                TaskResult status = Childs[i].Execute(ai);
+
+                if (status == TaskResult.Failure)
+                {
+                    return status;
+                }
+            }
+            return TaskResult.Success;
+        }
+    }
+}
+
+</code></pre>
+
+<p>The Decisions Classes must be marked with [Action] attribute too and the class must derived from 'Decision'.</p>
+<h1 id="displaying-elements">Displaying Elements</h1>
+<p>To display elements on the Node Inspector every field must be marked with [Display] Atributte.</p>
+<p>if the field are private it must be marked with [SerializeField] too. </p>
+<p>code example:</p>
+<pre><code class="csharp">
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using MoonBehavior.Memory;
+using MoonBehavior.Core;
+
+namespace MoonBehavior.Actions
+{
+    [Action]
+    public class MyAction : Task
+    {
+
+        [Display]
+        public float MyFloat; 
+
+        // OnExecute is called when the action are executed
+        public override TaskResult OnExecute(MoonAI ai)
+        {
+            Debug.Log(myFloat);
+            return TaskResult.Success; 
+        }
+    }
+}
+
+</code></pre>
+
+<p>it will display 'Myfloat' in the node inspector when you select it. </p>
+<h1 id="aditional-options">Aditional Options</h1>
+<p><strong>Action Attributte:</strong></p>
+<blockquote>
+<p>Category: The category for this task. </p>
+<p>Name: An override of the name for this task.</p>
+</blockquote>
+<p>both options takes effect on the nodelist.</p>
+<p><strong>Task:</strong></p>
+<blockquote>
+<p>OnEnter(MoonAI ai): called when start executing a Task. </p>
+<p>OnExit(MoonAI ai): Called when a task returns SUCCESS or FAILURE.</p>
+</blockquote>
+<p><strong>Decision</strong></p>
+<blockquote>
+<p>SingleChild (Property) : Should this decision contains only one Child ?</p>
+</blockquote>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../using-memory/" class="btn btn-neutral" title="Using Memory"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../using-memory/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script src="../js/theme.js"></script>
+
+</body>
+</html>
