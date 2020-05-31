@@ -1,0 +1,15 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using MoonBehavior.BehaviorTrees;
+using MoonBehavior;
+
+public class #NAME# : Task
+{
+    // Called when the task is executed
+    public override TaskResult OnExecute(MoonAI ai)
+    {
+
+        return TaskResult.Success;
+    }
+}

@@ -1,0 +1,13 @@
+site_name: MoonBehavior Docs
+theme: material
+extra_css: 
+    - css/mermaid.css
+extra_javascript:
+    - js/mermaid.min.js
+    - js/mermaid_init.js
+pages:
+    - 'Home' : 'index.md'
+    - 'Getting started' : 'getting-started.md'
+    - 'Node Types' : 'node-types.md'
+    - 'Using Memory' : 'using-memory.md'
+    - 'Creating custom actions' : 'custom-nodes.md'

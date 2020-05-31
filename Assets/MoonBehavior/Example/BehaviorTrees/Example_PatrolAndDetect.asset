@@ -1,0 +1,1666 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48514631956e7624e9b36aa6e4a2b8b9, type: 3}
+  m_Name: Example_PatrolAndDetect
+  m_EditorClassIdentifier: 
+  Description: 'AI that patrols in a set of points (See MoonPath component) and detects
+    the player, when the AI finds the player, the AI will follow the player. '
+  Root: {fileID: 114695702737231724}
+  Tasks:
+  - {fileID: 114680528058868646}
+  - {fileID: 114741697730568272}
+  - {fileID: 114132787488885114}
+  - {fileID: 114007563040880052}
+  - {fileID: 114746981696589556}
+  - {fileID: 114315667819984498}
+  - {fileID: 114524960447733212}
+  - {fileID: 114908617829555782}
+  - {fileID: 114910698367590148}
+  - {fileID: 114922141902300584}
+  - {fileID: 114283976147292090}
+  - {fileID: 114937804257555416}
+  - {fileID: 114821405327502246}
+  - {fileID: 114695702737231724}
+  - {fileID: 114433000458592854}
+--- !u!114 &114007563040880052
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aab2e78746c07524d9895bc7d601e2ac, type: 3}
+  m_Name: Task__Patrol
+  m_EditorClassIdentifier: 
+  TaskID: 119a0b63-6086-4ea6-8fcb-9bfee15384b4
+  _Priority:
+    type: 1
+    IsConstant: 0
+    constantOnly: 0
+    _PredefinedType: 1
+    Key: 
+    BoolValue: 0
+    StringValue: 
+    floatValue: 0
+    intValue: 0
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 1, g: 1, b: 1, a: 1}
+    objectValue: {fileID: 0}
+    LayerValue:
+      serializedVersion: 2
+      m_Bits: 0
+  Mode: 1
+  PatrolPathKey:
+    type: 0
+    IsConstant: 1
+    constantOnly: 0
+    _PredefinedType: 1
+    Key: 
+    BoolValue: 0
+    StringValue: Path
+    floatValue: 0
+    intValue: 0
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 1, g: 1, b: 1, a: 1}
+    objectValue: {fileID: 0}
+    LayerValue:
+      serializedVersion: 2
+      m_Bits: 0
+  NextWayPointDistance:
+    type: 1
+    IsConstant: 1
+    constantOnly: 0
+    _PredefinedType: 1
+    Key: 
+    BoolValue: 0
+    StringValue: 
+    floatValue: 2
+    intValue: 0
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 1, g: 1, b: 1, a: 1}
+    objectValue: {fileID: 0}
+    LayerValue:
+      serializedVersion: 2
+      m_Bits: 0
+  TargetPointSaveKey:
+    type: 0
+    IsConstant: 1
+    constantOnly: 0
+    _PredefinedType: 1
+    Key: 
+    BoolValue: 0
+    StringValue: Target
+    floatValue: 0
+    intValue: 0
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 1, g: 1, b: 1, a: 1}
+    objectValue: {fileID: 0}
+    LayerValue:
+      serializedVersion: 2
+      m_Bits: 0
+  CurrentDistanceSaveKey:
+    type: 0
+    IsConstant: 1
+    constantOnly: 0
+    _PredefinedType: 1
+    Key: 
+    BoolValue: 0
+    StringValue: TargetDist
+    floatValue: 0
+    intValue: 0
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 1, g: 1, b: 1, a: 1}
+    objectValue: {fileID: 0}
+    LayerValue:
+      serializedVersion: 2
+      m_Bits: 0
+--- !u!114 &114085562955450602
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6168deb64698c144a150b286ef667bb, type: 3}
+  m_Name: Repeater
+  m_EditorClassIdentifier: 
+  Tooltip: 
+  tooltipPosition: 0
+  task: {fileID: 114214656669126690}
+  id: edac6db9-f02a-4cc3-b6d3-e79e19505b72
+  _PositionOffset: {x: 439.22974, y: 663.3697}
+  _Position: {x: -156.17538, y: -448.59964}
+  rect:
+    serializedVersion: 2
+    x: 283.05435
+    y: 214.77005
+    width: 100
+    height: 40
+  outputs:
+  - rect:
+      serializedVersion: 2
+      x: 391.05435
+      y: 228.77005
+      width: 12
+      height: 12
+    parentid: edac6db9-f02a-4cc3-b6d3-e79e19505b72
+    targetInputsids:
+    - a62690ca-e262-4604-b128-5ef166f3f7de
+  inputPort:
+    rect:
+      serializedVersion: 2
+      x: 282.55435
+      y: 228.77005
+      width: 12
+      height: 12
+    parentid: edac6db9-f02a-4cc3-b6d3-e79e19505b72
+    Order: 0
+    _outputNodeID: 53d344c1-8936-4769-ab27-e9876e58bccc
+    _outputIndex: 0
+--- !u!114 &114088124469803424
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6168deb64698c144a150b286ef667bb, type: 3}
+  m_Name: Condition
+  m_EditorClassIdentifier: 
+  Tooltip: We have found the player
+  tooltipPosition: 0
+  task: {fileID: 114433000458592854}
+  id: 53d344c1-8936-4769-ab27-e9876e58bccc
+  _PositionOffset: {x: 439.22974, y: 663.3697}
+  _Position: {x: -315.71625, y: -481.76938}
+  rect:
+    serializedVersion: 2
+    x: 123.51349
+    y: 181.60031
+    width: 100
+    height: 40
+  outputs:
+  - rect:
+      serializedVersion: 2
+      x: 231.51349
+      y: 195.60031
+      width: 12
+      height: 12
+    parentid: 53d344c1-8936-4769-ab27-e9876e58bccc
+    targetInputsids:
+    - edac6db9-f02a-4cc3-b6d3-e79e19505b72
+  inputPort:
+    rect:
+      serializedVersion: 2
+      x: 123.01349
+      y: 195.60031
+      width: 12
+      height: 12
+    parentid: 53d344c1-8936-4769-ab27-e9876e58bccc
+    Order: 1
+    _outputNodeID: 0472f201-100a-4a50-bf3f-b884729ac92e
+    _outputIndex: 0
+--- !u!114 &114099253058767512
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6168deb64698c144a150b286ef667bb, type: 3}
+  m_Name: Move
+  m_EditorClassIdentifier: 
+  Tooltip: 
+  tooltipPosition: 0
+  task: {fileID: 114315667819984498}
+  id: 09351a28-8f10-4b4b-8471-53205fb53503
+  _PositionOffset: {x: 439.22974, y: 663.3697}
+  _Position: {x: 229.66422, y: -558.2097}
+  rect:
+    serializedVersion: 2
+    x: 668.8939
+    y: 105.15997
+    width: 100
+    height: 40
+  outputs: []
+  inputPort:
+    rect:
+      serializedVersion: 2
+      x: 668.3939
+      y: 119.15997
+      width: 12
+      height: 12
+    parentid: 09351a28-8f10-4b4b-8471-53205fb53503
+    Order: 1
+    _outputNodeID: d1d0e142-49bd-4cd2-8e5d-09b02d3ca19b
+    _outputIndex: 0
+--- !u!114 &114113168220658436
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6168deb64698c144a150b286ef667bb, type: 3}
+  m_Name: Set Bool
+  m_EditorClassIdentifier: 
+  Tooltip: 
+  tooltipPosition: 0
+  task: {fileID: 114937804257555416}
+  id: c767cdf1-c700-4c93-9b35-36722a2cb1dc
+  _PositionOffset: {x: 439.22974, y: 663.3697}
+  _Position: {x: 229.78403, y: -606.2899}
+  rect:
+    serializedVersion: 2
+    x: 669.0138
+    y: 57.079773
+    width: 100
+    height: 40
+  outputs: []
+  inputPort:
+    rect:
+      serializedVersion: 2
+      x: 668.5138
+      y: 71.07977
+      width: 12
+      height: 12
+    parentid: c767cdf1-c700-4c93-9b35-36722a2cb1dc
+    Order: 0
+    _outputNodeID: d1d0e142-49bd-4cd2-8e5d-09b02d3ca19b
+    _outputIndex: 0
+--- !u!114 &114132787488885114
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 515e96f600fbd2c42a00c7f3e16c9146, type: 3}
+  m_Name: Task__Detect
+  m_EditorClassIdentifier: 
+  TaskID: e919e8b4-d09e-4b97-8497-1dcd40b53478
+  _Priority:
+    type: 1
+    IsConstant: 1
+    constantOnly: 0
+    _PredefinedType: 1
+    Key: 
+    BoolValue: 0
+    StringValue: 
+    floatValue: 0
+    intValue: 0
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 1, g: 1, b: 1, a: 1}
+    objectValue: {fileID: 0}
+    LayerValue:
+      serializedVersion: 2
+      m_Bits: 0
+  _SensorName:
+    type: 0
+    IsConstant: 1
+    constantOnly: 0
+    _PredefinedType: 1
+    Key: 
+    BoolValue: 0
+    StringValue: vision
+    floatValue: 0
+    intValue: 0
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 1, g: 1, b: 1, a: 1}
+    objectValue: {fileID: 0}
+    LayerValue:
+      serializedVersion: 2
+      m_Bits: 0
+  _SearchTag:
+    type: 0
+    IsConstant: 1
+    constantOnly: 0
+    _PredefinedType: 1
+    Key: 
+    BoolValue: 0
+    StringValue: Player
+    floatValue: 0
+    intValue: 0
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 1, g: 1, b: 1, a: 1}
+    objectValue: {fileID: 0}
+    LayerValue:
+      serializedVersion: 2
+      m_Bits: 0
+  _SaveName:
+    type: 0
+    IsConstant: 1
+    constantOnly: 0
+    _PredefinedType: 1
+    Key: 
+    BoolValue: 0
+    StringValue: Player
+    floatValue: 0
+    intValue: 0
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 1, g: 1, b: 1, a: 1}
+    objectValue: {fileID: 0}
+    LayerValue:
+      serializedVersion: 2
+      m_Bits: 0
+  _DetectSelf:
+    type: 3
+    IsConstant: 1
+    constantOnly: 0
+    _PredefinedType: 1
+    Key: 
+    BoolValue: 0
+    StringValue: 
+    floatValue: 0
+    intValue: 0
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 1, g: 1, b: 1, a: 1}
+    objectValue: {fileID: 0}
+    LayerValue:
+      serializedVersion: 2
+      m_Bits: 0
+  _ResetOnExitSensor:
+    type: 3
+    IsConstant: 1
+    constantOnly: 0
+    _PredefinedType: 1
+    Key: 
+    BoolValue: 0
+    StringValue: 
+    floatValue: 0
+    intValue: 0
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 1, g: 1, b: 1, a: 1}
+    objectValue: {fileID: 0}
+    LayerValue:
+      serializedVersion: 2
+      m_Bits: 0
+--- !u!114 &114213368179226386
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6168deb64698c144a150b286ef667bb, type: 3}
+  m_Name: Sequencer
+  m_EditorClassIdentifier: 
+  Tooltip: 
+  tooltipPosition: 0
+  task: {fileID: 114746981696589556}
+  id: d1d0e142-49bd-4cd2-8e5d-09b02d3ca19b
+  _PositionOffset: {x: 439.22974, y: 663.3697}
+  _Position: {x: 31.094635, y: -552.78}
+  rect:
+    serializedVersion: 2
+    x: 470.32437
+    y: 110.58966
+    width: 100
+    height: 40
+  outputs:
+  - rect:
+      serializedVersion: 2
+      x: 578.32434
+      y: 124.58966
+      width: 12
+      height: 12
+    parentid: d1d0e142-49bd-4cd2-8e5d-09b02d3ca19b
+    targetInputsids:
+    - 09351a28-8f10-4b4b-8471-53205fb53503
+    - c767cdf1-c700-4c93-9b35-36722a2cb1dc
+    - f194ec04-2383-49e0-913a-3c20fb6f7e06
+    - bc68ad5b-dfce-4bbd-b550-bae8d745f97e
+  inputPort:
+    rect:
+      serializedVersion: 2
+      x: 469.82437
+      y: 124.58966
+      width: 12
+      height: 12
+    parentid: d1d0e142-49bd-4cd2-8e5d-09b02d3ca19b
+    Order: 2
+    _outputNodeID: 41108df7-47fa-47ab-a07d-1d50cffd06fc
+    _outputIndex: 0
+--- !u!114 &114214656669126690
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d394a755f6b915f48aadd15adbceec7b, type: 3}
+  m_Name: Task__Repeater
+  m_EditorClassIdentifier: 
+  TaskID: 745e0cdd-dfdc-48db-96cc-6838e714deba
+  _Priority:
+    type: 1
+    IsConstant: 1
+    constantOnly: 0
+    _PredefinedType: 1
+    Key: 
+    BoolValue: 0
+    StringValue: 
+    floatValue: 0
+    intValue: 0
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 1, g: 1, b: 1, a: 1}
+    objectValue: {fileID: 0}
+    LayerValue:
+      serializedVersion: 2
+      m_Bits: 0
+  _Childs:
+  - {fileID: 114910698367590148}
+  repeatUntil: 0
+--- !u!114 &114217044502604616
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6168deb64698c144a150b286ef667bb, type: 3}
+  m_Name: Condition
+  m_EditorClassIdentifier: 
+  Tooltip: We don't find the player
+  tooltipPosition: 1
+  task: {fileID: 114680528058868646}
+  id: a80d2fe4-e056-43e0-8e99-1e4828648261
+  _PositionOffset: {x: 439.22974, y: 663.3697}
+  _Position: {x: -315.03497, y: -539.4697}
+  rect:
+    serializedVersion: 2
+    x: 124.19476
+    y: 123.89996
+    width: 100
+    height: 40
+  outputs:
+  - rect:
+      serializedVersion: 2
+      x: 232.19476
+      y: 137.89996
+      width: 12
+      height: 12
+    parentid: a80d2fe4-e056-43e0-8e99-1e4828648261
+    targetInputsids:
+    - 41108df7-47fa-47ab-a07d-1d50cffd06fc
+  inputPort:
+    rect:
+      serializedVersion: 2
+      x: 123.69476
+      y: 137.89996
+      width: 12
+      height: 12
+    parentid: a80d2fe4-e056-43e0-8e99-1e4828648261
+    Order: 0
+    _outputNodeID: 0472f201-100a-4a50-bf3f-b884729ac92e
+    _outputIndex: 0
+--- !u!114 &114259261306369818
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6168deb64698c144a150b286ef667bb, type: 3}
+  m_Name: Detect
+  m_EditorClassIdentifier: 
+  Tooltip: Detect player entity
+  tooltipPosition: 1
+  task: {fileID: 114132787488885114}
+  id: 475ef494-62d4-49f0-997d-efb9b083070f
+  _PositionOffset: {x: 439.22974, y: 663.3697}
+  _Position: {x: 30.964539, y: -653.75}
+  rect:
+    serializedVersion: 2
+    x: 470.19427
+    y: 9.61969
+    width: 100
+    height: 40
+  outputs: []
+  inputPort:
+    rect:
+      serializedVersion: 2
+      x: 469.69427
+      y: 23.61969
+      width: 12
+      height: 12
+    parentid: 475ef494-62d4-49f0-997d-efb9b083070f
+    Order: 0
+    _outputNodeID: 41108df7-47fa-47ab-a07d-1d50cffd06fc
+    _outputIndex: 0
+--- !u!114 &114267577104492356
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6168deb64698c144a150b286ef667bb, type: 3}
+  m_Name: Move
+  m_EditorClassIdentifier: 
+  Tooltip: 
+  tooltipPosition: 0
+  task: {fileID: 114908617829555782}
+  id: 01a2724a-d65a-4754-a2f7-106d746995e4
+  _PositionOffset: {x: 439.22974, y: 663.3697}
+  _Position: {x: 227.6547, y: -371.9998}
+  rect:
+    serializedVersion: 2
+    x: 666.8844
+    y: 291.3699
+    width: 100
+    height: 40
+  outputs: []
+  inputPort:
+    rect:
+      serializedVersion: 2
+      x: 666.3844
+      y: 305.3699
+      width: 12
+      height: 12
+    parentid: 01a2724a-d65a-4754-a2f7-106d746995e4
+    Order: 1
+    _outputNodeID: a62690ca-e262-4604-b128-5ef166f3f7de
+    _outputIndex: 0
+--- !u!114 &114283976147292090
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecae16775d65b8d4993c378c545de4bd, type: 3}
+  m_Name: Task__SetBool
+  m_EditorClassIdentifier: 
+  TaskID: 4b4737ab-d279-4645-9247-3a6a9f907c02
+  _Priority:
+    type: 1
+    IsConstant: 1
+    constantOnly: 0
+    _PredefinedType: 1
+    Key: 
+    BoolValue: 0
+    StringValue: 
+    floatValue: 0
+    intValue: 0
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 1, g: 1, b: 1, a: 1}
+    objectValue: {fileID: 0}
+    LayerValue:
+      serializedVersion: 2
+      m_Bits: 0
+  Parameter:
+    type: 0
+    IsConstant: 1
+    constantOnly: 0
+    _PredefinedType: 1
+    Key: 
+    BoolValue: 0
+    StringValue: IsMoving
+    floatValue: 0
+    intValue: 0
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 1, g: 1, b: 1, a: 1}
+    objectValue: {fileID: 0}
+    LayerValue:
+      serializedVersion: 2
+      m_Bits: 0
+  ParamValue:
+    type: 3
+    IsConstant: 1
+    constantOnly: 0
+    _PredefinedType: 1
+    Key: 
+    BoolValue: 0
+    StringValue: 
+    floatValue: 0
+    intValue: 0
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 1, g: 1, b: 1, a: 1}
+    objectValue: {fileID: 0}
+    LayerValue:
+      serializedVersion: 2
+      m_Bits: 0
+--- !u!114 &114298862219867318
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6168deb64698c144a150b286ef667bb, type: 3}
+  m_Name: Parallel
+  m_EditorClassIdentifier: 
+  Tooltip: 
+  tooltipPosition: 0
+  task: {fileID: 114741697730568272}
+  id: 41108df7-47fa-47ab-a07d-1d50cffd06fc
+  _PositionOffset: {x: 439.22974, y: 663.3697}
+  _Position: {x: -145.5954, y: -604.0498}
+  rect:
+    serializedVersion: 2
+    x: 293.63434
+    y: 59.319885
+    width: 100
+    height: 40
+  outputs:
+  - rect:
+      serializedVersion: 2
+      x: 401.63434
+      y: 73.319885
+      width: 12
+      height: 12
+    parentid: 41108df7-47fa-47ab-a07d-1d50cffd06fc
+    targetInputsids:
+    - 475ef494-62d4-49f0-997d-efb9b083070f
+    - a203999e-c95a-49e0-8eb5-958775b61bd2
+    - d1d0e142-49bd-4cd2-8e5d-09b02d3ca19b
+  inputPort:
+    rect:
+      serializedVersion: 2
+      x: 293.13434
+      y: 73.319885
+      width: 12
+      height: 12
+    parentid: 41108df7-47fa-47ab-a07d-1d50cffd06fc
+    Order: 0
+    _outputNodeID: a80d2fe4-e056-43e0-8e99-1e4828648261
+    _outputIndex: 0
+--- !u!114 &114299794993956748
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6168deb64698c144a150b286ef667bb, type: 3}
+  m_Name: Wait
+  m_EditorClassIdentifier: 
+  Tooltip: 
+  tooltipPosition: 0
+  task: {fileID: 114524960447733212}
+  id: f194ec04-2383-49e0-913a-3c20fb6f7e06
+  _PositionOffset: {x: 439.22974, y: 663.3697}
+  _Position: {x: 229.43423, y: -467.14975}
+  rect:
+    serializedVersion: 2
+    x: 668.66394
+    y: 196.21994
+    width: 100
+    height: 40
+  outputs: []
+  inputPort:
+    rect:
+      serializedVersion: 2
+      x: 668.16394
+      y: 210.21994
+      width: 12
+      height: 12
+    parentid: f194ec04-2383-49e0-913a-3c20fb6f7e06
+    Order: 3
+    _outputNodeID: d1d0e142-49bd-4cd2-8e5d-09b02d3ca19b
+    _outputIndex: 0
+--- !u!114 &114315667819984498
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d70fe11743dc4dc49a743dc8a5b18fb0, type: 3}
+  m_Name: Task__Move
+  m_EditorClassIdentifier: 
+  TaskID: 3b279336-566e-49df-81c1-5a17153dc2b4
+  _Priority:
+    type: 1
+    IsConstant: 1
+    constantOnly: 0
+    _PredefinedType: 1
+    Key: 
+    BoolValue: 0
+    StringValue: 
+    floatValue: 0
+    intValue: 0
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 1, g: 1, b: 1, a: 1}
+    objectValue: {fileID: 0}
+    LayerValue:
+      serializedVersion: 2
+      m_Bits: 0
+  Target:
+    type: 5
+    IsConstant: 0
+    constantOnly: 0
+    _PredefinedType: 1
+    Key: Target
+    BoolValue: 0
+    StringValue: 
+    floatValue: 0
+    intValue: 0
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 1, g: 1, b: 1, a: 1}
+    objectValue: {fileID: 0}
+    LayerValue:
+      serializedVersion: 2
+      m_Bits: 0
+  StopDistance:
+    type: 1
+    IsConstant: 1
+    constantOnly: 0
+    _PredefinedType: 1
+    Key: 
+    BoolValue: 0
+    StringValue: 
+    floatValue: 2
+    intValue: 0
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 1, g: 1, b: 1, a: 1}
+    objectValue: {fileID: 0}
+    LayerValue:
+      serializedVersion: 2
+      m_Bits: 0
+  Speed:
+    type: 1
+    IsConstant: 0
+    constantOnly: 0
+    _PredefinedType: 1
+    Key: Speed
+    BoolValue: 0
+    StringValue: 
+    floatValue: 0
+    intValue: 0
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 1, g: 1, b: 1, a: 1}
+    objectValue: {fileID: 0}
+    LayerValue:
+      serializedVersion: 2
+      m_Bits: 0
+--- !u!114 &114408796219301764
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6168deb64698c144a150b286ef667bb, type: 3}
+  m_Name: Sequencer
+  m_EditorClassIdentifier: 
+  Tooltip: 
+  tooltipPosition: 0
+  task: {fileID: 114910698367590148}
+  id: a62690ca-e262-4604-b128-5ef166f3f7de
+  _PositionOffset: {x: 439.22974, y: 663.3697}
+  _Position: {x: 7.004242, y: -389.73984}
+  rect:
+    serializedVersion: 2
+    x: 446.23398
+    y: 273.62985
+    width: 100
+    height: 40
+  outputs:
+  - rect:
+      serializedVersion: 2
+      x: 554.234
+      y: 287.62985
+      width: 12
+      height: 12
+    parentid: a62690ca-e262-4604-b128-5ef166f3f7de
+    targetInputsids:
+    - 01a2724a-d65a-4754-a2f7-106d746995e4
+    - 93642669-dc83-4a96-acb2-0b4ec7ad9240
+    - beb76a76-c3fa-41f9-b527-fe88d472b81b
+  inputPort:
+    rect:
+      serializedVersion: 2
+      x: 445.73398
+      y: 287.62985
+      width: 12
+      height: 12
+    parentid: a62690ca-e262-4604-b128-5ef166f3f7de
+    Order: 0
+    _outputNodeID: edac6db9-f02a-4cc3-b6d3-e79e19505b72
+    _outputIndex: 0
+--- !u!114 &114433000458592854
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97a9a050381e5f74d9271b16d9e27a57, type: 3}
+  m_Name: Task__BTCondition
+  m_EditorClassIdentifier: 
+  TaskID: 9a653c0a-5e65-44a1-aa87-01086cc95cab
+  _Priority:
+    type: 1
+    IsConstant: 1
+    constantOnly: 0
+    _PredefinedType: 1
+    Key: 
+    BoolValue: 0
+    StringValue: 
+    floatValue: 0
+    intValue: 0
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 1, g: 1, b: 1, a: 1}
+    objectValue: {fileID: 0}
+    LayerValue:
+      serializedVersion: 2
+      m_Bits: 0
+  _Childs:
+  - {fileID: 114214656669126690}
+  conditions:
+  - Operator: 0
+    AKey: Player
+    BKey: 
+    BConstant: 0
+    Type: 3
+    op_numeric:
+      BValue: 0
+      Mode: 0
+    op_string:
+      BValue: 
+      Mode: 0
+    op_bool:
+      BValue: 0
+      Mode: 0
+    op_obj:
+      Mode: 1
+--- !u!114 &114512938352598656
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6168deb64698c144a150b286ef667bb, type: 3}
+  m_Name: Set Bool
+  m_EditorClassIdentifier: 
+  Tooltip: 
+  tooltipPosition: 0
+  task: {fileID: 114922141902300584}
+  id: 93642669-dc83-4a96-acb2-0b4ec7ad9240
+  _PositionOffset: {x: 439.22974, y: 663.3697}
+  _Position: {x: 227.36435, y: -415.75003}
+  rect:
+    serializedVersion: 2
+    x: 666.5941
+    y: 247.61966
+    width: 100
+    height: 40
+  outputs: []
+  inputPort:
+    rect:
+      serializedVersion: 2
+      x: 666.0941
+      y: 261.61966
+      width: 12
+      height: 12
+    parentid: 93642669-dc83-4a96-acb2-0b4ec7ad9240
+    Order: 0
+    _outputNodeID: a62690ca-e262-4604-b128-5ef166f3f7de
+    _outputIndex: 0
+--- !u!114 &114524960447733212
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e81f82c4de7e46b42a3df9358c23ddc1, type: 3}
+  m_Name: Task__Wait
+  m_EditorClassIdentifier: 
+  TaskID: 30f27d5e-7834-4b38-a8a1-e76e75193ea3
+  _Priority:
+    type: 1
+    IsConstant: 1
+    constantOnly: 0
+    _PredefinedType: 1
+    Key: 
+    BoolValue: 0
+    StringValue: 
+    floatValue: 0
+    intValue: 0
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 1, g: 1, b: 1, a: 1}
+    objectValue: {fileID: 0}
+    LayerValue:
+      serializedVersion: 2
+      m_Bits: 0
+  Seconds:
+    type: 1
+    IsConstant: 1
+    constantOnly: 0
+    _PredefinedType: 1
+    Key: 
+    BoolValue: 0
+    StringValue: 
+    floatValue: 2
+    intValue: 0
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 1, g: 1, b: 1, a: 1}
+    objectValue: {fileID: 0}
+    LayerValue:
+      serializedVersion: 2
+      m_Bits: 0
+--- !u!114 &114553555178872174
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5569951886be8142affa7c459eb3307, type: 3}
+  m_Name: Example_PatrolAndDetect
+  m_EditorClassIdentifier: 
+  Nodes:
+  - {fileID: 114085562955450602}
+  - {fileID: 114299794993956748}
+  - {fileID: 114088124469803424}
+  - {fileID: 114298862219867318}
+  - {fileID: 114267577104492356}
+  - {fileID: 114512938352598656}
+  - {fileID: 114627446131778448}
+  - {fileID: 114585418506631558}
+  - {fileID: 114639310317212486}
+  - {fileID: 114113168220658436}
+  - {fileID: 114942468857303860}
+  - {fileID: 114213368179226386}
+  - {fileID: 114217044502604616}
+  - {fileID: 114099253058767512}
+  - {fileID: 114259261306369818}
+  - {fileID: 114408796219301764}
+  Offset: {x: 75.72974, y: 485.3697}
+  ZoomPivot: {x: 363.5, y: 178}
+  Zoom: 1
+  rootId: 0472f201-100a-4a50-bf3f-b884729ac92e
+  _bt: {fileID: 11400000}
+--- !u!114 &114585418506631558
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6168deb64698c144a150b286ef667bb, type: 3}
+  m_Name: Patrol
+  m_EditorClassIdentifier: 
+  Tooltip: 
+  tooltipPosition: 0
+  task: {fileID: 114007563040880052}
+  id: a203999e-c95a-49e0-8eb5-958775b61bd2
+  _PositionOffset: {x: 439.22974, y: 663.3697}
+  _Position: {x: 30.914612, y: -602.7897}
+  rect:
+    serializedVersion: 2
+    x: 470.14435
+    y: 60.580017
+    width: 100
+    height: 40
+  outputs: []
+  inputPort:
+    rect:
+      serializedVersion: 2
+      x: 469.64435
+      y: 74.58002
+      width: 12
+      height: 12
+    parentid: a203999e-c95a-49e0-8eb5-958775b61bd2
+    Order: 1
+    _outputNodeID: 41108df7-47fa-47ab-a07d-1d50cffd06fc
+    _outputIndex: 0
+--- !u!114 &114627446131778448
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6168deb64698c144a150b286ef667bb, type: 3}
+  m_Name: Set Bool
+  m_EditorClassIdentifier: 
+  Tooltip: 
+  tooltipPosition: 0
+  task: {fileID: 114283976147292090}
+  id: beb76a76-c3fa-41f9-b527-fe88d472b81b
+  _PositionOffset: {x: 439.22974, y: 663.3697}
+  _Position: {x: 228.82462, y: -327.28992}
+  rect:
+    serializedVersion: 2
+    x: 668.0543
+    y: 336.07977
+    width: 100
+    height: 40
+  outputs: []
+  inputPort:
+    rect:
+      serializedVersion: 2
+      x: 667.5543
+      y: 350.07977
+      width: 12
+      height: 12
+    parentid: beb76a76-c3fa-41f9-b527-fe88d472b81b
+    Order: 2
+    _outputNodeID: a62690ca-e262-4604-b128-5ef166f3f7de
+    _outputIndex: 0
+--- !u!114 &114639310317212486
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6168deb64698c144a150b286ef667bb, type: 3}
+  m_Name: Parallel
+  m_EditorClassIdentifier: 
+  Tooltip: 
+  tooltipPosition: 0
+  task: {fileID: 114695702737231724}
+  id: 0472f201-100a-4a50-bf3f-b884729ac92e
+  _PositionOffset: {x: 439.22974, y: 663.3697}
+  _Position: {x: -493.18628, y: -514.43945}
+  rect:
+    serializedVersion: 2
+    x: -53.956543
+    y: 148.93024
+    width: 100
+    height: 40
+  outputs:
+  - rect:
+      serializedVersion: 2
+      x: 54.043457
+      y: 162.93024
+      width: 12
+      height: 12
+    parentid: 0472f201-100a-4a50-bf3f-b884729ac92e
+    targetInputsids:
+    - a80d2fe4-e056-43e0-8e99-1e4828648261
+    - 53d344c1-8936-4769-ab27-e9876e58bccc
+  inputPort:
+    rect:
+      serializedVersion: 2
+      x: -54.456543
+      y: 162.93024
+      width: 12
+      height: 12
+    parentid: 0472f201-100a-4a50-bf3f-b884729ac92e
+    Order: 0
+    _outputNodeID: 
+    _outputIndex: -1
+--- !u!114 &114680528058868646
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97a9a050381e5f74d9271b16d9e27a57, type: 3}
+  m_Name: Task__BTCondition
+  m_EditorClassIdentifier: 
+  TaskID: 9d2786a9-e9f1-4b03-8390-d33ad3132f4b
+  _Priority:
+    type: 1
+    IsConstant: 1
+    constantOnly: 0
+    _PredefinedType: 1
+    Key: 
+    BoolValue: 0
+    StringValue: 
+    floatValue: 0
+    intValue: 0
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 1, g: 1, b: 1, a: 1}
+    objectValue: {fileID: 0}
+    LayerValue:
+      serializedVersion: 2
+      m_Bits: 0
+  _Childs:
+  - {fileID: 114741697730568272}
+  conditions:
+  - Operator: 0
+    AKey: Player
+    BKey: 
+    BConstant: 0
+    Type: 3
+    op_numeric:
+      BValue: 0
+      Mode: 0
+    op_string:
+      BValue: 
+      Mode: 0
+    op_bool:
+      BValue: 0
+      Mode: 0
+    op_obj:
+      Mode: 0
+--- !u!114 &114695702737231724
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 603ea0b8cb1c46546b3ea406d2f45535, type: 3}
+  m_Name: Task__Parallel
+  m_EditorClassIdentifier: 
+  TaskID: 9e2669ee-11ec-418b-8ae6-dcb37b8c19b1
+  _Priority:
+    type: 1
+    IsConstant: 1
+    constantOnly: 0
+    _PredefinedType: 1
+    Key: 
+    BoolValue: 0
+    StringValue: 
+    floatValue: 0
+    intValue: 0
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 1, g: 1, b: 1, a: 1}
+    objectValue: {fileID: 0}
+    LayerValue:
+      serializedVersion: 2
+      m_Bits: 0
+  _Childs:
+  - {fileID: 114680528058868646}
+  - {fileID: 114433000458592854}
+--- !u!114 &114741697730568272
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 603ea0b8cb1c46546b3ea406d2f45535, type: 3}
+  m_Name: Task__Parallel
+  m_EditorClassIdentifier: 
+  TaskID: b0b59c44-3ded-410c-8e7e-bf095dc32300
+  _Priority:
+    type: 1
+    IsConstant: 1
+    constantOnly: 0
+    _PredefinedType: 1
+    Key: 
+    BoolValue: 0
+    StringValue: 
+    floatValue: 0
+    intValue: 0
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 1, g: 1, b: 1, a: 1}
+    objectValue: {fileID: 0}
+    LayerValue:
+      serializedVersion: 2
+      m_Bits: 0
+  _Childs:
+  - {fileID: 114132787488885114}
+  - {fileID: 114007563040880052}
+  - {fileID: 114746981696589556}
+--- !u!114 &114746981696589556
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb8ba6e7119b59349bb9e627c1b0d4d3, type: 3}
+  m_Name: Task__Sequencer
+  m_EditorClassIdentifier: 
+  TaskID: 0c35db68-925d-4cdf-bd79-21863a745827
+  _Priority:
+    type: 1
+    IsConstant: 1
+    constantOnly: 0
+    _PredefinedType: 1
+    Key: 
+    BoolValue: 0
+    StringValue: 
+    floatValue: 0
+    intValue: 0
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 1, g: 1, b: 1, a: 1}
+    objectValue: {fileID: 0}
+    LayerValue:
+      serializedVersion: 2
+      m_Bits: 0
+  _Childs:
+  - {fileID: 114937804257555416}
+  - {fileID: 114315667819984498}
+  - {fileID: 114821405327502246}
+  - {fileID: 114524960447733212}
+--- !u!114 &114821405327502246
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecae16775d65b8d4993c378c545de4bd, type: 3}
+  m_Name: Task__SetBool
+  m_EditorClassIdentifier: 
+  TaskID: 19b0a579-b8d6-4e2f-9a16-c27251048b0f
+  _Priority:
+    type: 1
+    IsConstant: 1
+    constantOnly: 0
+    _PredefinedType: 1
+    Key: 
+    BoolValue: 0
+    StringValue: 
+    floatValue: 0
+    intValue: 0
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 1, g: 1, b: 1, a: 1}
+    objectValue: {fileID: 0}
+    LayerValue:
+      serializedVersion: 2
+      m_Bits: 0
+  Parameter:
+    type: 0
+    IsConstant: 1
+    constantOnly: 0
+    _PredefinedType: 1
+    Key: 
+    BoolValue: 0
+    StringValue: IsMoving
+    floatValue: 0
+    intValue: 0
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 1, g: 1, b: 1, a: 1}
+    objectValue: {fileID: 0}
+    LayerValue:
+      serializedVersion: 2
+      m_Bits: 0
+  ParamValue:
+    type: 3
+    IsConstant: 1
+    constantOnly: 0
+    _PredefinedType: 1
+    Key: 
+    BoolValue: 0
+    StringValue: 
+    floatValue: 0
+    intValue: 0
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 1, g: 1, b: 1, a: 1}
+    objectValue: {fileID: 0}
+    LayerValue:
+      serializedVersion: 2
+      m_Bits: 0
+--- !u!114 &114908617829555782
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d70fe11743dc4dc49a743dc8a5b18fb0, type: 3}
+  m_Name: Task__Move
+  m_EditorClassIdentifier: 
+  TaskID: c8aaba4e-ea6f-45ed-9935-69cb47ff8f7d
+  _Priority:
+    type: 1
+    IsConstant: 1
+    constantOnly: 0
+    _PredefinedType: 1
+    Key: 
+    BoolValue: 0
+    StringValue: 
+    floatValue: 0
+    intValue: 0
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 1, g: 1, b: 1, a: 1}
+    objectValue: {fileID: 0}
+    LayerValue:
+      serializedVersion: 2
+      m_Bits: 0
+  Target:
+    type: 5
+    IsConstant: 0
+    constantOnly: 0
+    _PredefinedType: 1
+    Key: Player
+    BoolValue: 0
+    StringValue: 
+    floatValue: 0
+    intValue: 0
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 1, g: 1, b: 1, a: 1}
+    objectValue: {fileID: 0}
+    LayerValue:
+      serializedVersion: 2
+      m_Bits: 0
+  StopDistance:
+    type: 1
+    IsConstant: 1
+    constantOnly: 0
+    _PredefinedType: 1
+    Key: 
+    BoolValue: 0
+    StringValue: 
+    floatValue: 2.5
+    intValue: 0
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 1, g: 1, b: 1, a: 1}
+    objectValue: {fileID: 0}
+    LayerValue:
+      serializedVersion: 2
+      m_Bits: 0
+  Speed:
+    type: 1
+    IsConstant: 0
+    constantOnly: 0
+    _PredefinedType: 1
+    Key: Speed
+    BoolValue: 0
+    StringValue: 
+    floatValue: 0
+    intValue: 0
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 1, g: 1, b: 1, a: 1}
+    objectValue: {fileID: 0}
+    LayerValue:
+      serializedVersion: 2
+      m_Bits: 0
+--- !u!114 &114910698367590148
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb8ba6e7119b59349bb9e627c1b0d4d3, type: 3}
+  m_Name: Task__Sequencer
+  m_EditorClassIdentifier: 
+  TaskID: 5bb7c053-3ad2-4add-99f2-1ca4b1e38e43
+  _Priority:
+    type: 1
+    IsConstant: 1
+    constantOnly: 0
+    _PredefinedType: 1
+    Key: 
+    BoolValue: 0
+    StringValue: 
+    floatValue: 0
+    intValue: 0
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 1, g: 1, b: 1, a: 1}
+    objectValue: {fileID: 0}
+    LayerValue:
+      serializedVersion: 2
+      m_Bits: 0
+  _Childs:
+  - {fileID: 114922141902300584}
+  - {fileID: 114908617829555782}
+  - {fileID: 114283976147292090}
+--- !u!114 &114922141902300584
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecae16775d65b8d4993c378c545de4bd, type: 3}
+  m_Name: Task__SetBool
+  m_EditorClassIdentifier: 
+  TaskID: 9a8c8b66-2dc2-47bb-ac4d-40c206a61caa
+  _Priority:
+    type: 1
+    IsConstant: 1
+    constantOnly: 0
+    _PredefinedType: 1
+    Key: 
+    BoolValue: 0
+    StringValue: 
+    floatValue: 0
+    intValue: 0
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 1, g: 1, b: 1, a: 1}
+    objectValue: {fileID: 0}
+    LayerValue:
+      serializedVersion: 2
+      m_Bits: 0
+  Parameter:
+    type: 0
+    IsConstant: 1
+    constantOnly: 0
+    _PredefinedType: 1
+    Key: 
+    BoolValue: 0
+    StringValue: IsMoving
+    floatValue: 0
+    intValue: 0
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 1, g: 1, b: 1, a: 1}
+    objectValue: {fileID: 0}
+    LayerValue:
+      serializedVersion: 2
+      m_Bits: 0
+  ParamValue:
+    type: 3
+    IsConstant: 1
+    constantOnly: 0
+    _PredefinedType: 1
+    Key: 
+    BoolValue: 1
+    StringValue: 
+    floatValue: 0
+    intValue: 0
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 1, g: 1, b: 1, a: 1}
+    objectValue: {fileID: 0}
+    LayerValue:
+      serializedVersion: 2
+      m_Bits: 0
+--- !u!114 &114937804257555416
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecae16775d65b8d4993c378c545de4bd, type: 3}
+  m_Name: Task__SetBool
+  m_EditorClassIdentifier: 
+  TaskID: 380afc78-a75a-4ae0-8ee5-2af1cc998cbf
+  _Priority:
+    type: 1
+    IsConstant: 1
+    constantOnly: 0
+    _PredefinedType: 1
+    Key: 
+    BoolValue: 0
+    StringValue: 
+    floatValue: 0
+    intValue: 0
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 1, g: 1, b: 1, a: 1}
+    objectValue: {fileID: 0}
+    LayerValue:
+      serializedVersion: 2
+      m_Bits: 0
+  Parameter:
+    type: 0
+    IsConstant: 1
+    constantOnly: 0
+    _PredefinedType: 1
+    Key: 
+    BoolValue: 0
+    StringValue: IsMoving
+    floatValue: 0
+    intValue: 0
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 1, g: 1, b: 1, a: 1}
+    objectValue: {fileID: 0}
+    LayerValue:
+      serializedVersion: 2
+      m_Bits: 0
+  ParamValue:
+    type: 3
+    IsConstant: 1
+    constantOnly: 0
+    _PredefinedType: 1
+    Key: 
+    BoolValue: 1
+    StringValue: 
+    floatValue: 0
+    intValue: 0
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 1, g: 1, b: 1, a: 1}
+    objectValue: {fileID: 0}
+    LayerValue:
+      serializedVersion: 2
+      m_Bits: 0
+--- !u!114 &114942468857303860
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6168deb64698c144a150b286ef667bb, type: 3}
+  m_Name: Set Bool
+  m_EditorClassIdentifier: 
+  Tooltip: 
+  tooltipPosition: 0
+  task: {fileID: 114821405327502246}
+  id: bc68ad5b-dfce-4bbd-b550-bae8d745f97e
+  _PositionOffset: {x: 439.22974, y: 663.3697}
+  _Position: {x: 229.564, y: -512.1497}
+  rect:
+    serializedVersion: 2
+    x: 668.7937
+    y: 151.21997
+    width: 100
+    height: 40
+  outputs: []
+  inputPort:
+    rect:
+      serializedVersion: 2
+      x: 668.2937
+      y: 165.21997
+      width: 12
+      height: 12
+    parentid: bc68ad5b-dfce-4bbd-b550-bae8d745f97e
+    Order: 2
+    _outputNodeID: d1d0e142-49bd-4cd2-8e5d-09b02d3ca19b
+    _outputIndex: 0

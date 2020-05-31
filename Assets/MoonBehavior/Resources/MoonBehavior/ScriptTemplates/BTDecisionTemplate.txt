@@ -1,0 +1,25 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using MoonBehavior.BehaviorTrees;
+using MoonBehavior;
+
+public class #NAME# : Decision
+{
+    // Called when the task is executed
+    // Decision defines the execution of tasks
+    public override TaskResult OnExecute(MoonAI ai)
+    {
+
+        for (int i = 0; i < Childs.Length; i++)
+        {
+            // Result of current executing child task
+            TaskResult tres = Childs[i].Execute(ai);
+
+			return tres;
+            
+        }
+
+        return TaskResult.Success;
+    }
+}
